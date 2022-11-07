@@ -8,6 +8,9 @@
     "test": "react-scripts test --watchAll=false",
     "test:watch": "react-scripts test",
     "test:coverage": "npm test -- --coverage",
+    "test:e2e": "cypress run -b chrome",
+    "cy": "cypress open",
+    "cy:e2e": "cypress open -b chrome --e2e",
     "eject": "react-scripts eject"
   },
   "dependencies": {
@@ -18,17 +21,26 @@
     "web-vitals": "2.1.4"
   },
   "devDependencies": {
-    "@testing-library/user-event": "13.5.0",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.4.0",
+    "@testing-library/user-event": "13.5.0",
+    "cypress": "10.11.0",
+    "eslint-plugin-cypress": "2.12.1",
     "prop-types": "15.8.1",
     "standard": "17.0.0"
   },
   "eslintConfig": {
     "env": {
-      "jest": true
+      "jest": true,
+      "cypress/globals": true
     },
-    "extends": "./node_modules/standard/eslintrc.json"
+    "extends": [
+      "plugin:cypress/recommended",
+      "./node_modules/standard/eslintrc.json"
+    ],
+    "plugins": [
+      "cypress"
+    ]
   },
   "browserslist": {
     "production": [
